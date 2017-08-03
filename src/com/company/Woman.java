@@ -3,17 +3,17 @@ package com.company;
 import java.util.Random;
 import java.util.Scanner;
 
-/**
- * Created by User on 8/1/2017.
- */
-public class Woman extends Human {
+ class Woman extends Human {
 
 
     Woman(String name, String surname, float height, float weight) {
         super(name, surname, height, weight);
         this.sex = false;
     }
-     public Human birthBaby(Man partner){
+
+     //method implements ability to birth
+
+      Human birthBaby(Man partner){
         boolean gender = false;
          Random r = new Random();
          if (r.nextDouble() < 0.5)

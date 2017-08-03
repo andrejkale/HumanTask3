@@ -2,15 +2,13 @@ package com.company;
 
 import java.util.Random;
 
-/**
- * Created by User on 8/1/2017.
- */
+
 public abstract class Human {
-    protected boolean sex;
-   protected   String name;
-   protected   String surname;
-    protected float height;
-   protected   float weight;
+     boolean sex;
+      private String name;
+     private String surname;
+     private float height;
+    private float weight;
 
     Human( String name, String surname, float height, float weight) {
         this.name = name;
@@ -29,39 +27,27 @@ public abstract class Human {
 
 
 
-    public boolean isSex() {
+    boolean isSex() {
         return sex;
     }
 
-    public String getName() {
+     String getName() {
         return name;
     }
 
-    public String getSurname() {
+     String getSurname() {
         return surname;
     }
 
-    public float getHeight() {
+     float getHeight() {
         return height;
     }
 
-    public float getWeight() {
+    float getWeight() {
         return weight;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public void setHeight(float height) {this.height = height;}
-
-    public void setWeight(float weight) {
-        this.weight = weight;
-    }
 
     @Override
     public String toString() {
@@ -74,7 +60,9 @@ public abstract class Human {
                 '}';
     }
 
-    boolean speak(Human partner) {
+    // method implements ability to speak
+
+    private boolean speak(Human partner) {
         if (!this.sex || !partner.sex)
             return true;
         else {
@@ -84,8 +72,11 @@ public abstract class Human {
         }
         return false;
      }
-     boolean tolerate(Human partner){
-         if (this.sex != partner.sex){
+    //method implements ability to tolerate
+
+
+    private boolean tolerate(Human partner){
+        if (this.sex != partner.sex){
              Random r = new Random();
              if(r.nextDouble() < 0.7)
                  return true;
@@ -102,7 +93,10 @@ public abstract class Human {
          }
          return false;
      }
-     boolean spendingTimeTogether(Human partner){
+
+    //method implements ability to spending time together
+
+     private boolean spendingTimeTogether(Human partner){
          if ((Math.abs(100 - this.getHeight() * 100) / partner.getHeight()) < 10  ){
              Random r = new Random();
              if(r.nextDouble() < 0.95)
@@ -114,7 +108,8 @@ public abstract class Human {
          }
          return false;
      }
-    Human haveRelationship(Human partner){
+    //method implements ability to have relationship
+    private Human haveRelationship(Human partner){
          if (this.sex != partner.sex){
              if (this.speak(partner) && this.tolerate(partner) && this.spendingTimeTogether(partner) ){
                  if (this.sex)
@@ -125,6 +120,8 @@ public abstract class Human {
          return null;
 
     }
+
+    //method implements ability to create new instance
     static Human matchHuman(Human partner1, Human partner2){
         return partner1.haveRelationship(partner2);
     }
