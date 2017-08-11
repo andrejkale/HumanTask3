@@ -3,7 +3,7 @@ package com.company;
 import java.util.Random;
 
 
-public abstract class Human {
+public  class Human {
      boolean sex;
       private String name;
      private String surname;
